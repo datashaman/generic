@@ -1,0 +1,25 @@
+{
+    "index": "generic",
+    "body": {
+        "mappings": {
+            "thing": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "title_raw": {
+                        "type": "string",
+                        "index": "not_analyzed"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "description_raw": {
+                        "type": "string",
+                        "index": "not_analyzed"
+                    }
+                }
+            }
+        }
+    }
+}

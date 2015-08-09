@@ -1,0 +1,13 @@
+{
+    "items": [
+        { "title": "Home", "route": [ "home" ] },
+        { "title": "Things", "route": [ "things.index" ] },
+        { "id": "about", "title": "About", "route": [ "about" ] },
+        { "id": "dropdown", "title": "Dropdown", "items": [
+            { "id": "action", "title": "Action", "href": "#" },
+            { "class": "divider" },
+            { "class": "dropdown-header", "title": "Nav header" },
+            { "title": "Separated link", "href": "#" }
+        ]}
+    ]
+}

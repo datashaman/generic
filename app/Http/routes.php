@@ -11,6 +11,6 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->welcome();
-});
+$app->get('/', [ 'as' => 'home', 'uses' => 'Controller@home' ]);
+$app->get('/about', [ 'as' => 'about', 'uses' => 'Controller@about' ]);
+$app->get('/things', [ 'as' => 'things.index', 'uses' => 'ThingsController@index' ]);
