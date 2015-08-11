@@ -24,6 +24,8 @@ class ImportThings extends Command {
     public function getArguments()
     {
         return [
+            [ 'index', InputArgument::REQUIRED, 'Index where the things are stored' ],
+            [ 'type', InputArgument::REQUIRED, 'Type of thing to be imported' ],
             [ 'input', InputArgument::REQUIRED, 'Input file with JSON array of things' ],
         ];
     }
@@ -40,9 +42,17 @@ class ImportThings extends Command {
         $things = json_decode(file_get_contents($this->argument('input')), true);
 
         foreach ($things as $thing) {
-            $thing['title_raw'] = $thing['title'];
-            $thing['description_raw'] = $thing['description'];
-            $elasticsearch->index([ 'index' => 'generic', 'type' => 'thing', 'body' => $thing ]);
+            $params = [
+                'index' => $this->argument('index'),
+                'type' => $this->argument('type'),
+                'body' => $thing
+            ];
+
+            if (!empty($thing['id'])) {
+                $params['id'] = $thing['id'];
+            }
+
+            $elasticsearch->index($params);
         }
 	}
 

@@ -1,0 +1,15 @@
+[
+    {
+        "index": "generic",
+        "type": "thing",
+        "id": "1",
+        "field": "category",
+        "value": { "index": "generic", "type": "category", "id": "doodad" }
+    }, {
+        "index": "generic",
+        "type": "thing",
+        "id": "2",
+        "field": "category",
+        "value": { "index": "generic", "type": "category", "id": "widget" }
+    }
+]

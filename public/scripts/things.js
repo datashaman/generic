@@ -1,7 +1,15 @@
 $(function() {
+    var aggs = {};
     var client = new $.es.Client();
 
-    $('[data-index]').each(function () {
+    $('div[data-index]').each(function () {
+        var $this = $(this);
+        $this.find('div[data-id]').each(function () {
+            aggs[$(this).data('id')] = $(this).data('definition');
+        });
+    });
+
+    $('table[data-index]').each(function () {
         var $this = $(this),
             data = $this.data(),
             columns = $this.find('thead th').map(function () {
@@ -20,7 +28,9 @@ $(function() {
         $this.dataTable({
             serverSide: true,
             ajax: {
+                method: 'POST',
                 url: url,
+                contentType: 'application/json',
                 data: function (data, settings) {
                     var params = {
                         from: data.start,
@@ -28,15 +38,27 @@ $(function() {
                     };
 
                     if (data.search.value) {
-                        params.q = data.search.value;
+                        params.query = {
+                            query_string: {
+                                query: data.search.value
+                            }
+                        };
                     }
+
+                    params.aggs = aggs;
 
                     if (data.order) {
-                        var order = data.order[0];
-                        params.sort = data.columns[order.column].data + '_raw:' + order.dir;
+                        params.sort = [];
+                        data.order.forEach(function (order) {
+                            var column = data.columns[order.column].data;
+                            column += '.raw';
+                            var sort = {};
+                            sort[column] = order.dir
+                            params.sort.push(sort);
+                        });
                     }
 
-                    return params;
+                    return JSON.stringify(params);
                 },
 
                 dataSrc: function (data) {
