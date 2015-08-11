@@ -11,4 +11,4 @@ It speaks directly to an Elasticsearch instance from the browser, so
 you should enable and configure CORS on the Elasticsearch instance in
 your config file:
 
-   http.cors.enabled: false
+    http.cors.enabled: false
