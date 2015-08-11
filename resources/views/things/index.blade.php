@@ -6,7 +6,7 @@
 </div>
 
 <div data-index="generic" data-type="thing">
-    <div data-id="category" data-definition='{"terms":{"field":"category.id"}}' data-type="category" />
+    <div data-id="category" data-definition='{"terms":{"field":"category.id"}}' data-type="category"></div>
 </div>
 
 <table data-index="generic" data-type="thing" class="table table-striped table-bordered" cellspacing="0" width="100%">

@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title></title>
-
 <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/styles/dataTables.bootstrap.css" />
 <link rel="stylesheet" href="/styles/site.css" />
-
 @yield('styles')
 </head>
-<body>
 
-<!-- Wrap all page content here -->
+<body>
 <div id="wrap">
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -39,7 +37,7 @@
 
 <div id="footer">
     <div class="container">
-        <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+        <p class="text-muted credit">&copy; {{ date('Y') }} <a href="https://github.com/datashaman">datashaman</a></p>
     </div>
 </div>
 
@@ -48,7 +46,7 @@
 <script src="/bower_components/elasticsearch/elasticsearch.jquery.min.js"></script>
 <script src="/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="/scripts/dataTables.bootstrap.min.js"></script>
-
 @yield('scripts')
 </body>
+
 </html>
